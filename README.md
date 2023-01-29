@@ -1,2 +1,2 @@
 # CRM_mini
-2023 / Class registration is a piece of cake.
+<a href="https://github.com/Yoon-men/Class_Registration_Master">CRM</a>의 mini version인 CRM_mini입니다.
