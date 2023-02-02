@@ -21,6 +21,12 @@ class MainUI(QMainWindow) :
         self.setWindowTitle("Class_Registration_Master_Mini_v1.0")
         self.setWindowIcon(QIcon("CRM.ico"))                 # Test code / please modify the contents of this line.
 
+        self.superBody_frm = QFrame(self)
+        self.superBody_frm.setGeometry(0, 0, 837, 612)
+        self.superBody_frm.setStyleSheet("QFrame{\n"
+                                            "background-color : #131514;\n"
+                                        "}")
+
 
         # body_part
         self.body_frm = QFrame(self)
@@ -167,7 +173,24 @@ class MainUI(QMainWindow) :
                                             "image : url(:/img/deactivate_ckb_hover.png);\n"
                                         "}")
 
+        self.subjectError_lb = QLabel(self.superBody_frm)
+        self.subjectError_lb.setGeometry()                  # Test code / please modify the contents of this line.
+        self.subjectError_lb.setStyleSheet("QLabel{\n"
+                                                "image : url(:/img/subjectError_lb.png);\n"
+                                                "border : 0px;\n"
+                                                "background-color : transparent;\n"
+                                            "}")
+        self.subjectError_lb.hide()
 
+        self.subjectError_bt = QPushButton(self.superBody_frm)
+        self.subjectError_bt.setGeometry()                  # Test code / please modify the contents of this line.
+        self.subjectError_bt.setStyleSheet("QPushButton{\n"
+                                                "image : url(:/img/finale_notPrepared_bt_normal.png);\n"
+                                            "}\n"
+                                            "QPushButton:hover{\n"
+                                                "image : url(:/img/finale_notPrepared_bt_hover.png);\n"
+                                            "}")
+        self.subjectError_bt.hide()
 
 
 
