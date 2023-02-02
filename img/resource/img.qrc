@@ -1,0 +1,15 @@
+<RCC>
+  <qresource prefix="/img">
+    <file>branch_closed.png</file>
+    <file>branch_open.png</file>
+    <file>subjectSave_bt_normal.png</file>
+    <file>subjectSave_bt_hover.png</file>
+    <file>savePoint.png</file>
+    <file>subjectBin_bt_normal.png</file>
+    <file>subjectBin_bt_hover.png</file>
+    <file>activate_ckb_normal.png</file>
+    <file>activate_ckb_hover.png</file>
+    <file>deactivate_ckb_normal.png</file>
+    <file>deactivate_ckb_hover.png</file>
+  </qresource>
+</RCC>
