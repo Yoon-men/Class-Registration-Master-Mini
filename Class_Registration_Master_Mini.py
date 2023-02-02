@@ -11,8 +11,9 @@
 '''
 
 import sys
-from PySide2.QtWidgets import QApplication
+from PySide2.QtWidgets import QApplication, QTreeWidgetItem
 from PySide2.QtCore import QThread, QObject, QEvent
+from collections import deque
 
 from CRMM_mainUI import MainUI
 
@@ -30,6 +31,9 @@ class Main(QObject) :
         basicFn = BasicFn()
         basicFn.moveToThread(thread_basicFn)
 
+        global subjectData
+        subjectData = deque()
+
         mainUI.show()
         self.signal()
         sys.exit(app.exec_())
@@ -44,8 +48,29 @@ class Main(QObject) :
 
 
 class BasicFn(QObject) : 
-    def joyGo(self) : 
-        pass                # Test code / please delete the contents of this line.
+    def setSubjectBox(self) : 
+        tmp = [QTreeWidgetItem(data) for data in subjectData]
+        mainUI.subjectBox_tw.clear()
+        mainUI.subjectBox_tw.insertTopLevelItems(0, tmp)
+
+
+
+    def addSubject(self) : 
+        subjectName, subjectCode = mainUI.subjectName_le.text(), mainUI.subjectCode_le.text()
+        if (subjectName == "") or (subjectCode == "") : 
+            mainUI.body_frm.hide()
+            mainUI.subjectError_lb.show()
+            mainUI.subjectError_bt.show()
+        else : 
+            global subjectData
+            if len(subjectData) < 10 : 
+                subjectData.append([subjectName, subjectCode, len(subjectData)+1])
+            elif len(subjectData) == 10 : 
+                subjectData.append([subjectName, subjectCode, 0])
+            else : 
+                # 더 이상 추가가 불가능하다는 오류 화면 표시                # Test code / please delete the contents of this line.
+                pass                # Test code / please delete the contents of this line.
+            
 
 
 
