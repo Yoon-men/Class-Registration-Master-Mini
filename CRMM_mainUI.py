@@ -145,6 +145,7 @@ class MainUI(QMainWindow) :
                                             "border : 0px;\n"
                                             "background-color : transparent;\n"
                                         "}")
+        self.savePoint_lb.hide()
 
         self.activate_ckb = QCheckBox(self.body_frm)
         self.activate_ckb.setGeometry(471, 536, 341, 51)
