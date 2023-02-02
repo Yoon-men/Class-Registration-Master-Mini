@@ -17,21 +17,21 @@ class MainUI(QMainWindow) :
     def mainUI(self) : 
         # basic_part
         self.setAttribute(Qt.WA_TranslucentBackground)
-        self.setFixedSize(836, 611)
+        self.setFixedSize(837, 612)
         self.setWindowTitle("Class_Registration_Master_Mini_v1.0")
         self.setWindowIcon(QIcon("CRM.ico"))                 # Test code / please modify the contents of this line.
 
 
         # body_part
         self.body_frm = QFrame(self)
-        self.body_frm.setGeometry(5, 5, 826, 601)
+        self.body_frm.setGeometry(6, 6, 826, 601)
         self.body_frm.setStyleSheet("QFrame{\n"
                                         "background-color : #131514;\n"
                                         "border : 4px solid #8a2c2c;\n"
                                     "}")
 
         self.addSubject_lb = QLabel(self.body_frm)
-        self.addSubject_lb.setGeometry(142, 131, 540, 50)
+        self.addSubject_lb.setGeometry(142, 121, 540, 50)
         self.addSubject_lb.setStyleSheet("QLabel{\n"
                                             "border : 3px solid #8a2c2c;\n"
                                             "background-color : #131514;\n"
@@ -49,19 +49,19 @@ class MainUI(QMainWindow) :
                         "}")
 
         self.subjectName_le = QLineEdit(self.body_frm)
-        self.subjectName_le.setGeometry(151, 141, 239, 30)
+        self.subjectName_le.setGeometry(151, 131, 239, 30)
         self.subjectName_le.setFont(QFont("굴림", 12))
         self.subjectName_le.setStyleSheet(le_styleSheet)
         self.subjectName_le.setPlaceholderText("(교과목명)")
 
         self.subjectCode_le = QLineEdit(self.body_frm)
-        self.subjectCode_le.setGeometry(396, 141, 180, 30)
+        self.subjectCode_le.setGeometry(396, 131, 180, 30)
         self.subjectCode_le.setFont(QFont("굴림", 12))
         self.subjectCode_le.setStyleSheet(le_styleSheet)
         self.subjectCode_le.setPlaceholderText("(교과목코드)")
 
         self.addSubject_bt = QPushButton(self.body_frm)
-        self.addSubject_bt.setGeometry(582, 141, 91, 30)
+        self.addSubject_bt.setGeometry(582, 131, 91, 30)
         self.addSubject_bt.setFont(QFont("나눔고딕OTF", 12, QFont.ExtraBold))
         self.addSubject_bt.setStyleSheet("QPushButton{\n"
                                             "border : 2px solid #8a2c2c;\n"
@@ -76,7 +76,7 @@ class MainUI(QMainWindow) :
         self.addSubject_bt.setFocusPolicy(Qt.NoFocus)
 
         self.subjectBox_tw = QTreeWidget(self.body_frm)
-        self.subjectBox_tw.setGeometry(142, 189, 541, 301)
+        self.subjectBox_tw.setGeometry(142, 179, 541, 301)
         self.subjectBox_tw.setFont(QFont("나눔고딕OTF", 13, QFont.Bold))
         self.subjectBox_tw.setStyleSheet("QTreeWidget{\n"
                                                 "border : 3px solid #8a2c2c;\n"
@@ -119,6 +119,53 @@ class MainUI(QMainWindow) :
         self.subjectBox_tw.header().resizeSection(1, 190)
         self.subjectBox_tw.header().resizeSection(2, 100)
         self.subjectBox_tw.setFocusPolicy(Qt.NoFocus)
+
+        self.subjectBin_bt = QPushButton(self.body_frm)
+        self.subjectBin_bt.setGeometry(688, 440, 41, 41)
+        self.subjectBin_bt.setStyleSheet("QPushButton{\n"
+                                            "image : url(:/img/subjectBin_bt_normal.png);\n"
+                                        "}\n"
+                                        "QPushButton:hover{\n"
+                                            "image : url(:/img/subjectBin_bt_hover.png);\n"
+                                        "}")
+
+        self.subjectSave_bt = QPushButton(self.body_frm)
+        self.subjectSave_bt.setGeometry(688, 394, 41, 41)
+        self.subjectSave_bt.setStyleSheet("QPushButton{\n"
+                                                "image : url(:/img/subjectSave_bt_normal.png);\n"
+                                            "}\n"
+                                            "QPushButton:hover{\n"
+                                                "image : url(:/img/subjectSave_bt_hover.png);\n"
+                                            "}")
+
+        self.savePoint_lb = QLabel(self.body_frm)
+        self.savePoint_lb.setGeometry(735, 410, 8, 8)
+        self.savePoint_lb.setStyleSheet("QLabel{\n"
+                                            "image : url(:/img/savePoint.png);\n"
+                                            "border : 0px;\n"
+                                            "background-color : transparent;\n"
+                                        "}")
+
+        self.activate_ckb = QCheckBox(self.body_frm)
+        self.activate_ckb.setGeometry(471, 536, 341, 51)
+        self.activate_ckb.setStyleSheet("QCheckBox::indicator::unchecked{\n"
+                                            "image : url(:/img/activate_ckb_normal.png);\n"
+                                            "width : 341px;\n"
+                                            "height : 51px;\n"
+                                        "}\n"
+                                        "QCheckBox::indicator::unchecked::hover{\n"
+                                            "image : url(:/img/activate_ckb_hover.png);\n"
+                                        "}\n"
+                                        
+                                        "QCheckBox::indicator::checked{\n"
+                                            "image : url(:/img/deactivate_ckb_normal.png);\n"
+                                            "width : 341px;\n"
+                                            "height : 51px;\n"
+                                        "}\n"
+                                        "QCheckBox::indicator::checked::hover{\n"
+                                            "image : url(:/img/deactivate_ckb_hover.png);\n"
+                                        "}")
+
 
 
 
