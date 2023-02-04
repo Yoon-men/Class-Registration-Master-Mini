@@ -14,5 +14,8 @@
     <file>finale_notPrepared_bt_normal.png</file>
     <file>finale_notPrepared_bt_hover.png</file>
     <file>subjectError_lb.png</file>
+    <file>github_bt_normal.png</file>
+    <file>github_bt_hover.png</file>
+    <file>maxedOutError_lb.png</file>
   </qresource>
 </RCC>
