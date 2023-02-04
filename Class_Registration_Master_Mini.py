@@ -42,7 +42,8 @@ class Main(QObject) :
 
     def signal(self) : 
         # << mainUI (1/1) >> --------------------
-        pass                # Test code / please delete the contents of this line.
+        mainUI.subjectCode_le.returnPressed.connect(basicFn.addSubject)
+        mainUI.addSubject_bt.clicked.connect(basicFn.addSubject)
 
 
 
@@ -63,14 +64,15 @@ class BasicFn(QObject) :
             mainUI.subjectError_bt.show()
         else : 
             global subjectData
-            if len(subjectData) < 10 : 
-                subjectData.append([subjectName, subjectCode, len(subjectData)+1])
-            elif len(subjectData) == 10 : 
-                subjectData.append([subjectName, subjectCode, 0])
+            if len(subjectData) < 9 : 
+                subjectData.append([subjectName, subjectCode, f"ctrl+{len(subjectData)+1}"])
+                basicFn.setSubjectBox()
+            elif len(subjectData) == 9 : 
+                subjectData.append([subjectName, subjectCode, "ctrl+0"])
+                basicFn.setSubjectBox()
             else : 
                 # 더 이상 추가가 불가능하다는 오류 화면 표시                # Test code / please delete the contents of this line.
                 pass                # Test code / please delete the contents of this line.
-            
 
 
 
