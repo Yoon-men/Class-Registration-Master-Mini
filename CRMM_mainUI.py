@@ -174,7 +174,7 @@ class MainUI(QMainWindow) :
                                         "}")
 
         self.subjectError_lb = QLabel(self.superBody_frm)
-        self.subjectError_lb.setGeometry()                  # Test code / please modify the contents of this line.
+        self.subjectError_lb.setGeometry(138, 106, 561, 401)
         self.subjectError_lb.setStyleSheet("QLabel{\n"
                                                 "image : url(:/img/subjectError_lb.png);\n"
                                                 "border : 0px;\n"
@@ -183,7 +183,7 @@ class MainUI(QMainWindow) :
         self.subjectError_lb.hide()
 
         self.subjectError_bt = QPushButton(self.superBody_frm)
-        self.subjectError_bt.setGeometry()                  # Test code / please modify the contents of this line.
+        self.subjectError_bt.setGeometry(154, 441, 529, 53)
         self.subjectError_bt.setStyleSheet("QPushButton{\n"
                                                 "image : url(:/img/finale_notPrepared_bt_normal.png);\n"
                                             "}\n"
@@ -195,7 +195,14 @@ class MainUI(QMainWindow) :
 
 
     def signal(self) : 
-        pass                # Test code / please delete the contents of this line.
+        self.subjectError_bt.clicked.connect(self.returnToMain_subjectError)
+
+
+
+    def returnToMain_subjectError(self) : 
+        self.subjectError_lb.hide()
+        self.subjectError_bt.hide()
+        self.body_frm.show()
 
 
 
