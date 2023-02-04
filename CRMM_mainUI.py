@@ -173,6 +173,13 @@ class MainUI(QMainWindow) :
                                             "image : url(:/img/deactivate_ckb_hover.png);\n"
                                         "}")
 
+        error_bt_styleSheet = ("QPushButton{\n"
+                                    "image : url(:/img/finale_notPrepared_bt_normal.png);\n"
+                                "}\n"
+                                "QPushButton:hover{\n"
+                                    "image : url(:/img/finale_notPrepared_bt_hover.png);\n"
+                                "}")
+
         self.subjectError_lb = QLabel(self.superBody_frm)
         self.subjectError_lb.setGeometry(138, 106, 561, 401)
         self.subjectError_lb.setStyleSheet("QLabel{\n"
@@ -184,24 +191,41 @@ class MainUI(QMainWindow) :
 
         self.subjectError_bt = QPushButton(self.superBody_frm)
         self.subjectError_bt.setGeometry(154, 441, 529, 53)
-        self.subjectError_bt.setStyleSheet("QPushButton{\n"
-                                                "image : url(:/img/finale_notPrepared_bt_normal.png);\n"
-                                            "}\n"
-                                            "QPushButton:hover{\n"
-                                                "image : url(:/img/finale_notPrepared_bt_hover.png);\n"
-                                            "}")
+        self.subjectError_bt.setStyleSheet(error_bt_styleSheet)
         self.subjectError_bt.hide()
+
+        self.maxedOutError_lb = QLabel(self.superBody_frm)
+        self.maxedOutError_lb.setGeometry(138, 106, 561, 401)
+        self.maxedOutError_lb.setStyleSheet("QLabel{\n"
+                                                "image : url(:/img/maxedOutError_lb.png);\n"
+                                                "border : 0px;\n"
+                                                "background-color : transparent;\n"
+                                            "}")
+        self.maxedOutError_lb.hide()
+
+        self.maxedOutError_bt = QPushButton(self.superBody_frm)
+        self.maxedOutError_bt.setGeometry(154, 441, 529, 53)
+        self.maxedOutError_bt.setStyleSheet(error_bt_styleSheet)
+        self.maxedOutError_bt.hide()
 
 
 
     def signal(self) : 
         self.subjectError_bt.clicked.connect(self.returnToMain_subjectError)
+        self.maxedOutError_bt.clicked.connect(self.returnToMain_maxedOutError)
 
 
 
     def returnToMain_subjectError(self) : 
         self.subjectError_lb.hide()
         self.subjectError_bt.hide()
+        self.body_frm.show()
+
+
+
+    def returnToMain_maxedOutError(self) : 
+        self.maxedOutError_lb.hide()
+        self.maxedOutError_bt.hide()
         self.body_frm.show()
 
 
