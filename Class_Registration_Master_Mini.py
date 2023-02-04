@@ -45,6 +45,9 @@ class Main(QObject) :
         mainUI.subjectCode_le.returnPressed.connect(basicFn.addSubject)
         mainUI.addSubject_bt.clicked.connect(basicFn.addSubject)
 
+        mainUI.subjectSave_bt.clicked.connect(BasicFn.setSubjectData)               # Test code / please delete the contents of this line.
+        mainUI.subjectBin_bt.clicked.connect(BasicFn.delSubject)
+
 
 
 
@@ -71,8 +74,30 @@ class BasicFn(QObject) :
                 subjectData.append([subjectName, subjectCode, "ctrl+0"])
                 basicFn.setSubjectBox()
             else : 
-                # 더 이상 추가가 불가능하다는 오류 화면 표시                # Test code / please delete the contents of this line.
-                pass                # Test code / please delete the contents of this line.
+                mainUI.body_frm.hide()
+                mainUI.maxedOutError_lb.show()
+                mainUI.maxedOutError_bt.show()
+
+            mainUI.subjectName_le.setText(""); mainUI.subjectCode_le.setText("")
+
+
+
+    def setSubjectData(self) : 
+        global subjectData
+        N = mainUI.subjectBox_tw.topLevelItemCount()
+        subjectData = [0 for _ in range(N)]
+        for i in range(N) : 
+            item = mainUI.subjectBox_tw.topLevelItem(i)
+            subjectData[i] = [item.text(0), item.text(1), item.text(2)]
+
+
+
+    def delSubject(self) : 
+        if mainUI.subjectBox_tw.currentItem() : 
+            item = mainUI.subjectBox_tw.currentItem()
+            mainUI.subjectBox_tw.takeTopLevelItem(mainUI.subjectBox_tw.indexOfTopLevelItem(item))
+        
+        basicFn.setSubjectData()
 
 
 
