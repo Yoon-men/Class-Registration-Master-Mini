@@ -14,6 +14,9 @@ import sys
 from PySide2.QtWidgets import QApplication, QTreeWidgetItem
 from PySide2.QtCore import QThread, QObject, QEvent
 from collections import deque
+from keyboard import is_pressed
+from pyperclip import copy
+from pyautogui import hotkey
 
 from CRMM_mainUI import MainUI
 
@@ -34,6 +37,9 @@ class Main(QObject) :
         global subjectData
         subjectData = deque()
 
+        global power
+        power = False
+
         mainUI.show()
         self.signal()
         sys.exit(app.exec_())
@@ -47,6 +53,9 @@ class Main(QObject) :
 
         mainUI.subjectSave_bt.clicked.connect(BasicFn.setSubjectData)               # Test code / please delete the contents of this line.
         mainUI.subjectBin_bt.clicked.connect(BasicFn.delSubject)
+
+        mainUI.activate_bt.clicked.connect(basicFn.activate)
+        mainUI.deactivate_bt.clicked.connect(basicFn.deactivate)
 
 
 
@@ -98,6 +107,29 @@ class BasicFn(QObject) :
             mainUI.subjectBox_tw.takeTopLevelItem(mainUI.subjectBox_tw.indexOfTopLevelItem(item))
         
         basicFn.setSubjectData()
+
+
+
+    def activate(self) : 
+        global power
+        power = True
+        while power : 
+            if is_pressed("ctrl+1")   : copy(subjectData[0][1]); hotkey("ctrl", "v")
+            elif is_pressed("ctrl+2") : copy(subjectData[1][1]); hotkey("ctrl", "v")
+            elif is_pressed("ctrl+3") : copy(subjectData[2][1]); hotkey("ctrl", "v")
+            elif is_pressed("ctrl+4") : copy(subjectData[3][1]); hotkey("ctrl", "v")
+            elif is_pressed("ctrl+5") : copy(subjectData[4][1]); hotkey("ctrl", "v")
+            elif is_pressed("ctrl+6") : copy(subjectData[5][1]); hotkey("ctrl", "v")
+            elif is_pressed("ctrl+7") : copy(subjectData[6][1]); hotkey("ctrl", "v")
+            elif is_pressed("ctrl+8") : copy(subjectData[7][1]); hotkey("ctrl", "v")
+            elif is_pressed("ctrl+9") : copy(subjectData[8][1]); hotkey("ctrl", "v")
+            elif is_pressed("ctrl+0") : copy(subjectData[9][1]); hotkey("ctrl", "v")
+
+
+
+    def deactivate(self) : 
+        global power
+        power = False
 
 
 
