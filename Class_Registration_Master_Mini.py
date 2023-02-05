@@ -33,6 +33,13 @@ class Main(QObject) :
         global basicFn
         basicFn = BasicFn()
         basicFn.moveToThread(thread_basicFn)
+        
+        global thread_keyFn
+        thread_keyFn = QThread()
+        thread_keyFn.start()
+        global keyFn
+        keyFn = KeyFn()
+        keyFn.moveToThread(thread_keyFn)
 
         global subjectData
         subjectData = deque()
@@ -54,7 +61,7 @@ class Main(QObject) :
         mainUI.subjectSave_bt.clicked.connect(BasicFn.setSubjectData)               # Test code / please delete the contents of this line.
         mainUI.subjectBin_bt.clicked.connect(BasicFn.delSubject)
 
-        mainUI.activate_bt.clicked.connect(basicFn.activate)
+        mainUI.activate_bt.clicked.connect(keyFn.activate)
         mainUI.deactivate_bt.clicked.connect(basicFn.deactivate)
 
 
@@ -110,6 +117,14 @@ class BasicFn(QObject) :
 
 
 
+    def deactivate(self) : 
+        global power
+        power = False
+
+
+
+
+class KeyFn(QObject) : 
     def activate(self) : 
         global power
         power = True
@@ -124,12 +139,6 @@ class BasicFn(QObject) :
             elif is_pressed("ctrl+8") : copy(subjectData[7][1]); hotkey("ctrl", "v")
             elif is_pressed("ctrl+9") : copy(subjectData[8][1]); hotkey("ctrl", "v")
             elif is_pressed("ctrl+0") : copy(subjectData[9][1]); hotkey("ctrl", "v")
-
-
-
-    def deactivate(self) : 
-        global power
-        power = False
 
 
 
