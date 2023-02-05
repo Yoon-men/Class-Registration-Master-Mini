@@ -36,6 +36,16 @@ class MainUI(QMainWindow) :
                                         "border : 4px solid #8a2c2c;\n"
                                     "}")
 
+        self.github_bt = QPushButton(self.body_frm)
+        self.github_bt.setGeometry(14, 13, 40, 40)
+        self.github_bt.setStyleSheet("QPushButton{\n"
+                                        "border-radius : 10px;\n"
+                                        "image : url(:/img/github_bt_normal.png);\n"
+                                    "}\n"
+                                    "QPushButton:hover{\n"
+                                        "image : url(:/img/github_bt_hover.png);\n"
+                                    "}")
+
         self.addSubject_lb = QLabel(self.body_frm)
         self.addSubject_lb.setGeometry(142, 121, 540, 50)
         self.addSubject_lb.setStyleSheet("QLabel{\n"
@@ -211,8 +221,15 @@ class MainUI(QMainWindow) :
 
 
     def signal(self) : 
+        self.github_bt.clicked.connect(self.openGithub)
+
         self.subjectError_bt.clicked.connect(self.returnToMain_subjectError)
         self.maxedOutError_bt.clicked.connect(self.returnToMain_maxedOutError)
+
+
+
+    def openGithub(self) : 
+        webbrowser.open("https://github.com/Yoon-men/Class_Registration_Master_Mini")
 
 
 
