@@ -1,6 +1,6 @@
 from img.img import *
 import sys
-from PySide2.QtWidgets import QApplication, QMainWindow, QFrame, QPushButton, QRadioButton, QLabel, QButtonGroup, QLineEdit, QLCDNumber, QCheckBox, QTreeWidget, QAbstractItemView, QComboBox
+from PySide2.QtWidgets import QApplication, QMainWindow, QFrame, QPushButton, QRadioButton, QLabel, QButtonGroup, QLineEdit, QLCDNumber, QTreeWidget, QAbstractItemView, QComboBox
 from PySide2.QtGui import QFont, QIntValidator, QMovie, QIcon
 from PySide2.QtCore import Qt, QEvent, QByteArray
 
@@ -163,25 +163,26 @@ class MainUI(QMainWindow) :
                                         "}")
         self.savePoint_lb.hide()
 
-        self.activate_ckb = QCheckBox(self.body_frm)
-        self.activate_ckb.setGeometry(471, 536, 341, 51)
-        self.activate_ckb.setStyleSheet("QCheckBox::indicator::unchecked{\n"
-                                            "image : url(:/img/activate_ckb_normal.png);\n"
-                                            "width : 341px;\n"
-                                            "height : 51px;\n"
+        self.activate_bt = QPushButton(self.body_frm)
+        self.activate_bt.setGeometry(471, 536, 341, 51)
+        self.activate_bt.setStyleSheet("QPushButton{"
+                                            "image : url(:/img/activate_bt_normal.png);\n"
                                         "}\n"
-                                        "QCheckBox::indicator::unchecked::hover{\n"
-                                            "image : url(:/img/activate_ckb_hover.png);\n"
-                                        "}\n"
-                                        
-                                        "QCheckBox::indicator::checked{\n"
-                                            "image : url(:/img/deactivate_ckb_normal.png);\n"
-                                            "width : 341px;\n"
-                                            "height : 51px;\n"
-                                        "}\n"
-                                        "QCheckBox::indicator::checked::hover{\n"
-                                            "image : url(:/img/deactivate_ckb_hover.png);\n"
+                                        "QPushButton:hover{\n"
+                                            "image : url(:/img/activate_bt_hover.png);\n"
                                         "}")
+        global activeFlag
+        activeFlag = 0
+
+        self.deactivate_bt = QPushButton(self.body_frm)
+        self.deactivate_bt.setGeometry(471, 536, 341, 51)
+        self.deactivate_bt.setStyleSheet("QPushButton{\n"
+                                            "image : url(:/img/deactivate_bt_normal.png);\n"
+                                        "}\n"
+                                        "QPushButton:hover{\n"
+                                            "image : url(:/img/deactivate_bt_hover.png);\n"
+                                        "}")
+        self.deactivate_bt.hide()
 
         error_bt_styleSheet = ("QPushButton{\n"
                                     "image : url(:/img/finale_notPrepared_bt_normal.png);\n"
@@ -223,6 +224,9 @@ class MainUI(QMainWindow) :
     def signal(self) : 
         self.github_bt.clicked.connect(self.openGithub)
 
+        self.activate_bt.clicked.connect(self.buttonSwap)
+        self.deactivate_bt.clicked.connect(self.buttonSwap)
+
         self.subjectError_bt.clicked.connect(self.returnToMain_subjectError)
         self.maxedOutError_bt.clicked.connect(self.returnToMain_maxedOutError)
 
@@ -230,6 +234,19 @@ class MainUI(QMainWindow) :
 
     def openGithub(self) : 
         webbrowser.open("https://github.com/Yoon-men/Class_Registration_Master_Mini")
+
+
+
+    def buttonSwap(self) : 
+        global activeFlag
+        if not activeFlag : 
+            activeFlag = 1
+            self.activate_bt.hide()
+            self.deactivate_bt.show()
+        else : 
+            activeFlag = 0
+            self.deactivate_bt.hide()
+            self.activate_bt.show()
 
 
 
