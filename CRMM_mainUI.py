@@ -135,6 +135,8 @@ class MainUI(QMainWindow) :
         self.subjectBox_tw.header().resizeSection(1, 190)
         self.subjectBox_tw.header().resizeSection(2, 100)
         self.subjectBox_tw.setFocusPolicy(Qt.NoFocus)
+        self.subjectBox_tw.setDragDropMode(QAbstractItemView.DragDrop)
+        self.subjectBox_tw.setDefaultDropAction(Qt.MoveAction)
 
         self.subjectBin_bt = QPushButton(self.body_frm)
         self.subjectBin_bt.setGeometry(688, 440, 41, 41)
