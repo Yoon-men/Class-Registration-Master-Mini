@@ -104,7 +104,9 @@ class BasicFn(QObject) :
         subjectData = [0 for _ in range(N)]
         for i in range(N) : 
             item = mainUI.subjectBox_tw.topLevelItem(i)
-            subjectData[i] = [item.text(0), item.text(1), item.text(2)]
+            subjectData[i] = [item.text(0), item.text(1), f"ctrl+{i+1}" if i < 9 else "ctrl+0"]
+
+        basicFn.setSubjectBox()
 
 
 
@@ -129,7 +131,7 @@ class KeyFn(QObject) :
         global power
         power = True
         while power : 
-            if is_pressed("ctrl+1")   : copy(subjectData[0][1]); hotkey("ctrl", "v")
+            if   is_pressed("ctrl+1") : copy(subjectData[0][1]); hotkey("ctrl", "v")
             elif is_pressed("ctrl+2") : copy(subjectData[1][1]); hotkey("ctrl", "v")
             elif is_pressed("ctrl+3") : copy(subjectData[2][1]); hotkey("ctrl", "v")
             elif is_pressed("ctrl+4") : copy(subjectData[3][1]); hotkey("ctrl", "v")
