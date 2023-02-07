@@ -1,8 +1,8 @@
 from img.img import *
 import sys
-from PySide2.QtWidgets import QApplication, QMainWindow, QFrame, QPushButton, QRadioButton, QLabel, QButtonGroup, QLineEdit, QLCDNumber, QTreeWidget, QAbstractItemView, QComboBox
-from PySide2.QtGui import QFont, QIntValidator, QMovie, QIcon
-from PySide2.QtCore import Qt, QEvent, QByteArray
+from PySide2.QtWidgets import QApplication, QMainWindow, QFrame, QPushButton, QLabel, QLineEdit, QTreeWidget, QAbstractItemView
+from PySide2.QtGui import QFont, QIcon
+from PySide2.QtCore import Qt
 
 import webbrowser
 
@@ -19,7 +19,7 @@ class MainUI(QMainWindow) :
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.setFixedSize(837, 612)
         self.setWindowTitle("Class_Registration_Master_Mini_v1.0")
-        self.setWindowIcon(QIcon("CRM.ico"))                 # Test code / please modify the contents of this line.
+        self.setWindowIcon(QIcon("CRMM.ico"))
 
         self.superBody_frm = QFrame(self)
         self.superBody_frm.setGeometry(0, 0, 837, 612)
