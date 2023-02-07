@@ -4,7 +4,7 @@ from PySide2.QtWidgets import QApplication, QMainWindow, QFrame, QPushButton, QL
 from PySide2.QtGui import QFont, QIcon
 from PySide2.QtCore import Qt
 
-import webbrowser
+from webbrowser import open as webBrowserOpen
 
 
 class MainUI(QMainWindow) : 
@@ -235,7 +235,7 @@ class MainUI(QMainWindow) :
 
 
     def openGithub(self) : 
-        webbrowser.open("https://github.com/Yoon-men/Class_Registration_Master_Mini")
+        webBrowserOpen("https://github.com/Yoon-men/Class_Registration_Master_Mini")
 
 
 
