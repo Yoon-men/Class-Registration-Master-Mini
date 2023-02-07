@@ -18,7 +18,7 @@ class MainUI(QMainWindow) :
         # basic_part
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.setFixedSize(837, 612)
-        self.setWindowTitle("Class_Registration_Master_Mini_v1.0")
+        self.setWindowTitle("Class_Registration_Master_Mini_v1.0.1")
         self.setWindowIcon(QIcon("CRMM.ico"))
 
         self.superBody_frm = QFrame(self)
