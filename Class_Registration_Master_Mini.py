@@ -6,7 +6,7 @@
 
                                  * Made by Yoonmen *
 
-                                - 23.2.8 (WED) 03:01 -
+                                - 23.2.8 (WED) 03:51 -
 ======================================================================================
 '''
 
@@ -20,6 +20,7 @@ from pyautogui import hotkey
 
 from CRMM_mainUI import MainUI
 
+
 class Main(QObject) : 
     def __init__(self) : 
         super().__init__()
@@ -27,17 +28,15 @@ class Main(QObject) :
         global mainUI
         mainUI = MainUI()
 
-        global thread_basicFn
+        global thread_basicFn, basicFn
         thread_basicFn = QThread()
         thread_basicFn.start()
-        global basicFn
         basicFn = BasicFn()
         basicFn.moveToThread(thread_basicFn)
         
-        global thread_keyFn
+        global thread_keyFn, keyFn
         thread_keyFn = QThread()
         thread_keyFn.start()
-        global keyFn
         keyFn = KeyFn()
         keyFn.moveToThread(thread_keyFn)
 
@@ -115,26 +114,13 @@ class BasicFn(QObject) :
 
 
     def setSubjectData(self) : 
-        def recursiveSet(prt) : 
-            chdCnt = prt.childCount()
-            for j in range(chdCnt) : 
-                item = prt.child(j)
-                global cnt
-                subjectData.append([item.text(0), item.text(1), f"ctrl+{cnt+1}" if cnt < 9 else "ctrl+0"])
-                cnt += 1
-                if item.childCount() > 0 : recursiveSet(item)
-
-
         global subjectData
-        subjectData = []
-        global cnt
-        cnt = 0
-        for i in range(mainUI.subjectBox_tw.topLevelItemCount()) : 
+        N = mainUI.subjectBox_tw.topLevelItemCount()
+        subjectData = [None] * N
+        for i in range(N) : 
             item = mainUI.subjectBox_tw.topLevelItem(i)
-            subjectData.append([item.text(0), item.text(1), f"ctrl+{cnt+1}" if cnt < 9 else "ctrl+0"])
-            cnt += 1
-            recursiveSet(item)
-        
+            subjectData[i] = [item.text(0), item.text(1), f"ctrl+{i+1 if i < 9 else 0}"]
+
         basicFn.setSubjectBox()
         mainUI.savePoint_lb.hide()
 
