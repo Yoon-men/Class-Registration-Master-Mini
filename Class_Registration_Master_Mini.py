@@ -1,18 +1,18 @@
 '''
 ======================================================================================
-                        < Class_Registration_Master_Mini_v1.0 >
+                       < Class_Registration_Master_Mini_v1.0.1 >
 
 '수강신청 마스터'를 사용해 나머지 99%의 사람들에게 당신과의 격차를 확실히 느끼게 해주십시오.
 
                                  * Made by Yoonmen *
 
-                               - 23.2.7 (TUE) 10:11 -
+                                - 23.2.8 (WED) 03:01 -
 ======================================================================================
 '''
 
 import sys
 from PySide2.QtWidgets import QApplication, QTreeWidgetItem
-from PySide2.QtCore import QThread, QObject, QEvent
+from PySide2.QtCore import QThread, QObject, QEvent, Qt
 from collections import deque
 from keyboard import is_pressed
 from pyperclip import copy
@@ -80,7 +80,11 @@ class Main(QObject) :
 
 class BasicFn(QObject) : 
     def setSubjectBox(self) : 
-        tmp = [QTreeWidgetItem(data) for data in subjectData]
+        tmp = []
+        for data in subjectData : 
+            item = QTreeWidgetItem(data)
+            item.setFlags(Qt.ItemIsSelectable | Qt.ItemIsDragEnabled | Qt.ItemIsEnabled)
+            tmp.append(item)
         mainUI.subjectBox_tw.clear()
         mainUI.subjectBox_tw.insertTopLevelItems(0, tmp)
 
