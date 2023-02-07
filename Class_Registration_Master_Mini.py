@@ -6,7 +6,7 @@
 
                                  * Made by Yoonmen *
 
-                               - 23.?.?? (???) ??:?? -
+                               - 23.2.7 (TUE) 10:11 -
 ======================================================================================
 '''
 
@@ -56,11 +56,11 @@ class Main(QObject) :
     def signal(self) : 
         # << mainUI (1/1) >> --------------------
         mainUI.subjectCode_le.returnPressed.connect(basicFn.addSubject)
-        mainUI.addSubject_bt.clicked.connect(basicFn.addSubject)
+        mainUI.addSubject_bt.clicked.connect(BasicFn.addSubject)
 
         mainUI.subjectBox_tw.viewport().installEventFilter(self)
 
-        mainUI.subjectSave_bt.clicked.connect(BasicFn.setSubjectData)               # Test code / please delete the contents of this line.
+        mainUI.subjectSave_bt.clicked.connect(BasicFn.setSubjectData)
         mainUI.subjectBin_bt.clicked.connect(BasicFn.delSubject)
 
         mainUI.activate_bt.clicked.connect(keyFn.activate)
@@ -106,17 +106,31 @@ class BasicFn(QObject) :
                 mainUI.maxedOutError_bt.show()
 
             mainUI.subjectName_le.setText(""); mainUI.subjectCode_le.setText("")
+            mainUI.savePoint_lb.hide()
 
 
 
     def setSubjectData(self) : 
-        global subjectData
-        N = mainUI.subjectBox_tw.topLevelItemCount()
-        subjectData = [0 for _ in range(N)]
-        for i in range(N) : 
-            item = mainUI.subjectBox_tw.topLevelItem(i)
-            subjectData[i] = [item.text(0), item.text(1), f"ctrl+{i+1}" if i < 9 else "ctrl+0"]
+        def recursiveSet(prt) : 
+            chdCnt = prt.childCount()
+            for j in range(chdCnt) : 
+                item = prt.child(j)
+                global cnt
+                subjectData.append([item.text(0), item.text(1), f"ctrl+{cnt+1}" if cnt < 9 else "ctrl+0"])
+                cnt += 1
+                if item.childCount() > 0 : recursiveSet(item)
 
+
+        global subjectData
+        subjectData = []
+        global cnt
+        cnt = 0
+        for i in range(mainUI.subjectBox_tw.topLevelItemCount()) : 
+            item = mainUI.subjectBox_tw.topLevelItem(i)
+            subjectData.append([item.text(0), item.text(1), f"ctrl+{cnt+1}" if cnt < 9 else "ctrl+0"])
+            cnt += 1
+            recursiveSet(item)
+        
         basicFn.setSubjectBox()
         mainUI.savePoint_lb.hide()
 
