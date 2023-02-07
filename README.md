@@ -2,11 +2,11 @@
   <img src="https://user-images.githubusercontent.com/64591335/217135591-a35e01e5-1403-4f64-97c2-2a305d65df39.png" width="70%" height="70%"/>  
 </div>
 
-<a href="https://github.com/Yoon-men/Class_Registration_Master_Mini/releases/tag/v1.0"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/Yoon-men/Class_Registration_Master_Mini?color=e14f50&logo=github"></a>
+<a href="https://github.com/Yoon-men/Class_Registration_Master_Mini/releases/tag/v1.0.1"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/Yoon-men/Class_Registration_Master_Mini?color=e14f50&logo=github"></a>
 
 > <a href="https://github.com/Yoon-men/Class_Registration_Master">Class Registration Master</a>의 간소화 버전.
 
-# How To Use (v1.0)
+# How To Use
 <div align="center">
   <img src="https://user-images.githubusercontent.com/64591335/217146263-670a1542-51c7-4cdb-b214-6ca675e33faf.png" width="60%" height="60%"/>
 </div>
@@ -27,3 +27,6 @@
 # Update History
 ◇ 2023.2.7 ( TUE ) 10:11 // v1.0
 - v1.0 개발
+
+◇ 2023.2.8 ( WED ) 03:51 // v1.0.1
+- mainUI.subjectBox_tw >> ItemIsDropEnabled -> ItemIsDropDisabled
