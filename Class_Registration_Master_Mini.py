@@ -58,11 +58,22 @@ class Main(QObject) :
         mainUI.subjectCode_le.returnPressed.connect(basicFn.addSubject)
         mainUI.addSubject_bt.clicked.connect(basicFn.addSubject)
 
+        mainUI.subjectBox_tw.viewport().installEventFilter(self)
+
         mainUI.subjectSave_bt.clicked.connect(BasicFn.setSubjectData)               # Test code / please delete the contents of this line.
         mainUI.subjectBin_bt.clicked.connect(BasicFn.delSubject)
 
         mainUI.activate_bt.clicked.connect(keyFn.activate)
         mainUI.deactivate_bt.clicked.connect(basicFn.deactivate)
+
+
+
+    def eventFilter(self, object, event) : 
+        if object == mainUI.subjectBox_tw.viewport() : 
+            if event.type() == QEvent.Drop : 
+                mainUI.savePoint_lb.show()
+        
+        return False
 
 
 
@@ -107,6 +118,7 @@ class BasicFn(QObject) :
             subjectData[i] = [item.text(0), item.text(1), f"ctrl+{i+1}" if i < 9 else "ctrl+0"]
 
         basicFn.setSubjectBox()
+        mainUI.savePoint_lb.hide()
 
 
 
