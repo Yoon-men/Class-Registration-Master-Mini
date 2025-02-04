@@ -54,7 +54,7 @@ class Main(QObject) :
 
     def signal(self) : 
         # << mainUI (1/1) >> --------------------
-        mainUI.subjectCode_le.returnPressed.connect(basicFn.addSubject)
+        # mainUI.subjectCode_le.returnPressed.connect(BasicFn.addSubject)
         mainUI.addSubject_bt.clicked.connect(BasicFn.addSubject)
 
         mainUI.subjectBox_tw.viewport().installEventFilter(self)
