@@ -1,0 +1,7 @@
+PySide2
+keyboard
+pyperclip
+pyautogui
+pip-tools
+pyinstaller==5.13.2
+tinyaes
