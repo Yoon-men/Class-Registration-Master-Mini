@@ -12,7 +12,7 @@ import traceback
 
 
 class Config:
-    VERSION: str = "1.0.1"
+    VERSION: str = "1.0.2"
 
     def get_base_path() -> str:
         if getattr(sys, "frozen", False):
