@@ -1,10 +1,19 @@
-from img.img import *
 import sys
 from PySide2.QtWidgets import QApplication, QMainWindow, QFrame, QPushButton, QLabel, QLineEdit, QTreeWidget, QAbstractItemView
-from PySide2.QtGui import QFont, QIcon
+from PySide2.QtGui import QFont, QIcon, QFontDatabase
 from PySide2.QtCore import Qt
 
 from webbrowser import open as webBrowserOpen
+
+import os
+
+# * ------------------------------------------------------------ *#
+
+from img.img import *
+
+from etc.config import Config
+
+# * ------------------------------------------------------------ *#
 
 
 class MainUI(QMainWindow) : 
@@ -18,8 +27,13 @@ class MainUI(QMainWindow) :
         # basic_part
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.setFixedSize(837, 612)
-        self.setWindowTitle("Class_Registration_Master_Mini_v1.0.1")
+        self.setWindowTitle("Class Registration Master Mini")
         self.setWindowIcon(QIcon("CRMM.ico"))
+
+        if os.path.isfile(Config.ICON_PATH):
+            self.setWindowIcon(QIcon(Config.ICON_PATH))
+        if os.path.isfile(Config.FONT_PATH):
+            QFontDatabase.addApplicationFont(Config.FONT_PATH)
 
         self.superBody_frm = QFrame(self)
         self.superBody_frm.setGeometry(0, 0, 837, 612)
