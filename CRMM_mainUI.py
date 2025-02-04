@@ -28,7 +28,6 @@ class MainUI(QMainWindow) :
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.setFixedSize(837, 612)
         self.setWindowTitle("Class Registration Master Mini")
-        self.setWindowIcon(QIcon("CRMM.ico"))
 
         if os.path.isfile(Config.ICON_PATH):
             self.setWindowIcon(QIcon(Config.ICON_PATH))
